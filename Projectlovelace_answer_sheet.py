@@ -1,4 +1,4 @@
-# Project Lovelace easy to hard
+# Project Lovelace easy to hard by Gillessuperr
 #%%
 # Scientific temperatures
 def fahrenheit_to_celsius(F):
