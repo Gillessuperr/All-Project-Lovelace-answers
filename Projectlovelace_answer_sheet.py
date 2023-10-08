@@ -109,5 +109,51 @@ def survive(blood_type, donated_blood):
     return canbesaved
 #%% Babylonian square roots
 def babylonian_sqrt(S):
-    
-    return 0
+    if S==0:
+        return 0
+    x_n = 0
+    x_n1 = 1
+    while abs(x_n1-x_n)>0.000000001:
+        x_n = x_n1
+        x_n1 = 1/2*(x_n+(S/x_n))
+    return x_n1
+#%% Definite integrals
+def area_of_rectangles(rects, dx):
+    area = 0
+    area = sum([x*dx for x in rects])
+    return area
+#%% Rocket science
+from math import exp
+
+v_e = 2550  # rocket exhaust velocity [m/s]
+M = 250000  # rocket dry mass [kg]
+
+def rocket_fuel(v):
+    m_fuel = 0.0
+
+    m_fuel=M*(exp(v/v_e)-1)
+
+    return m_fuel
+#%% The game of life
+def count_live_neighbors(board, i, j):
+    count = 0
+    m, n = len(board), len(board[0])
+    for x in range(i-1, i+2):
+        for y in range(j-1, j+2):
+            if x == i and y == j:
+                continue
+            count += board[x % m][y % n]
+    return count
+
+def game_of_life(board, steps):
+    for step in range(steps):
+        new_board = [[0 for j in range(len(board[0]))] for i in range(len(board))]
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                live_neighbors = count_live_neighbors(board, i, j)
+                if board[i][j] == 1 and (live_neighbors == 2 or live_neighbors == 3):
+                    new_board[i][j] = 1
+                elif board[i][j] == 0 and live_neighbors == 3:
+                    new_board[i][j] = 1
+        board = new_board
+    return board
