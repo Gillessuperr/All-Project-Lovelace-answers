@@ -1,4 +1,5 @@
 # Project Lovelace easy to hard by Gillessuperr
+import math
 #%%
 # Scientific temperatures
 def fahrenheit_to_celsius(F):
@@ -46,7 +47,6 @@ def wind_chill(T_a, v):
 
     return T_wc
 #%% Flight paths
-import math
 from math import radians, sqrt, asin, sin, cos
 
 R  = 6372.1  # Radius of the Earth [km]
@@ -134,6 +134,27 @@ def rocket_fuel(v):
     m_fuel=M*(exp(v/v_e)-1)
 
     return m_fuel
+#%% Habitable exoplanets
+def habitable_exoplanet(L, r):
+    habitability = ''
+    r_i=sqrt(L/1.1)
+    r_o=sqrt(L/0.54)
+    if r>r_o:
+        habitability = 'too cold'
+    elif r<r_i:
+        habitability = 'too hot'
+    else:
+        habitability = 'just right'
+
+    return habitability
+#%% Chaos
+def logistic_map(r):
+    x = [0.5]
+
+    # Your code goes here!
+
+    return x
+
 #%% The game of life
 def count_live_neighbors(board, i, j):
     count = 0
